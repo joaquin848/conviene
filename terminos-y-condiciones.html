@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Términos de Conviene</title>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+
+<style>
+  :root {
+    /* Neutros con sesgo verde: el acento de la app, bajado a un valor que se
+       lee sobre papel. El neón de la burbuja no pasa contraste en claro. */
+    --papel: #F6F8F6;
+    --papel-hondo: #EDF1EE;
+    --tinta: #111917;
+    --tinta-suave: #55635E;
+    --verde: #007A38;
+    --verde-tenue: #E2F0E7;
+    --borde: #D7E0DA;
+    --borde-fuerte: #B9C7C0;
+
+    --serie: "Literata", Georgia, "Times New Roman", serif;
+    --titulo: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --papel: #0D1412;
+      --papel-hondo: #141D1A;
+      --tinta: #E7EFEA;
+      --tinta-suave: #93A49D;
+      --verde: #22FF8A;
+      --verde-tenue: #13251C;
+      --borde: #24312C;
+      --borde-fuerte: #33443D;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --papel: #0D1412;
+    --papel-hondo: #141D1A;
+    --tinta: #E7EFEA;
+    --tinta-suave: #93A49D;
+    --verde: #22FF8A;
+    --verde-tenue: #13251C;
+    --borde: #24312C;
+    --borde-fuerte: #33443D;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--papel);
+    color: var(--tinta);
+    font-family: var(--serie);
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0 20px 96px;
+  }
+
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* --- Encabezado --- */
+
+  header {
+    padding: 56px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .marca {
+    font-family: var(--titulo);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--verde);
+  }
+
+  h1 {
+    font-family: var(--titulo);
+    font-weight: 600;
+    font-size: clamp(30px, 6vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .fecha {
+    font-family: var(--titulo);
+    font-size: 13px;
+    color: var(--tinta-suave);
+    padding-top: 4px;
+    border-top: 1px solid var(--borde);
+  }
+
+  .entrada {
+    color: var(--tinta-suave);
+    margin: 0;
+  }
+
+  /* --- Resumen: es una lista de prioridad, por eso va numerada --- */
+
+  .resumen {
+    background: var(--papel-hondo);
+    border-left: 3px solid var(--verde);
+    padding: 24px 24px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .resumen h2 {
+    font-family: var(--titulo);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  .resumen ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: punto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .resumen li {
+    counter-increment: punto;
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .resumen li::before {
+    content: counter(punto);
+    font-family: var(--titulo);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--verde);
+    line-height: 1.9;
+  }
+
+  /* --- Secciones --- */
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  h2 {
+    font-family: var(--titulo);
+    font-weight: 600;
+    font-size: 23px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0;
+    padding-top: 18px;
+    border-top: 2px solid var(--tinta);
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-family: var(--titulo);
+    font-weight: 600;
+    font-size: 16px;
+    margin: 10px 0 -4px;
+  }
+
+  p { margin: 0; }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1em;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  li::marker { color: var(--borde-fuerte); }
+
+  strong { font-weight: 600; }
+
+  a {
+    color: var(--verde);
+    text-underline-offset: 3px;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--verde);
+    outline-offset: 3px;
+  }
+
+  /* --- El bloque de accesibilidad: es lo que más se cuestiona, así que se
+         separa del cuerpo y se lee como una ficha, no como más texto. --- */
+
+  .permiso {
+    border: 1px solid var(--borde-fuerte);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .permiso h2 {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .apps {
+    list-style: none;
+    padding: 0;
+    margin: 2px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .apps li {
+    font-family: var(--titulo);
+    font-size: 13px;
+    padding: 5px 11px;
+    background: var(--verde-tenue);
+    color: var(--verde);
+    border-radius: 3px;
+  }
+
+  .no {
+    font-family: var(--titulo);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--tinta);
+    background: var(--papel-hondo);
+    padding: 14px 16px;
+    border-radius: 3px;
+  }
+
+  /* --- Contacto --- */
+
+  .contacto {
+    border-top: 2px solid var(--tinta);
+    padding-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .correo {
+    font-family: var(--titulo);
+    font-weight: 600;
+    font-size: 19px;
+  }
+</style>
+
+<main>  <header>
+    <div class="marca">Conviene</div>
+    <h1>Términos y condiciones</h1>
+    <div class="fecha">Última actualización: 12 de septiembre de 2026 · versión 2</div>
+  </header>
+  <p class="entrada">Estos son los términos para usar Conviene. Están escritos para que se entiendan, no para esconder nada en la letra chica.</p>
+  <div class="resumen">
+    <h2>Lo más importante</h2>
+    <ol>
+      <li><span><strong>Conviene estima.</strong> No garantiza lo que vas a cobrar ni lo que vas a ganar.</span></li>
+      <li><span><strong>Las decisiones son tuyas.</strong> La app sugiere; aceptar o rechazar un pedido lo decidís vos.</span></li>
+      <li><span><strong>Mirá la burbuja con el vehículo parado.</strong> La app nunca te pide que hagas nada mientras manejás.</span></li>
+    </ol>
+  </div>
+  <section>
+    <h2>Cómo se aceptan estos términos</h2>
+    <p>Podés leer estos términos y la política de privacidad dentro de la app, en Ajustes, antes de crear una cuenta y antes de pagar. Entrar a la app o usar la prueba gratis no te compromete a ninguna suscripción.</p>
+    <p><strong>Para contratar la suscripción vas a tener que aceptarlos expresamente</strong>, con la casilla que aparece en la pantalla de pago. La versión que aceptaste y la fecha quedan guardadas, y siempre podés volver a leerlas desde Ajustes.</p>
+  </section>
+  <section>
+    <h2>Qué es Conviene</h2>
+    <p>Conviene es una calculadora para repartidores y conductores. Con las tarifas públicas de la plataforma y los costos que cargás vos —nafta, desgaste, gastos fijos— estima cuánto te deja un pedido y lleva la cuenta de tus turnos.</p>
+    <p><strong>No está afiliada, patrocinada ni autorizada por PedidosYa ni por ninguna otra plataforma de reparto.</strong> Esas marcas son de sus dueños y se nombran solo para decir con qué app funciona. Conviene no tiene acuerdos con ellas, no habla en su nombre y no tiene información privilegiada sobre cómo pagan.</p>
+    <p>No es asesoramiento financiero, contable ni laboral.</p>
+  </section>
+  <section>
+    <h2>Quién puede usarla</h2>
+    <p>Personas mayores de 18 años que trabajan repartiendo o manejando. Una cuenta por persona, con datos verdaderos.</p>
+  </section>
+  <section>
+    <h2>Tu cuenta</h2>
+    <p>Se entra con una cuenta de Google. Sos responsable de lo que se haga desde tu cuenta y desde tu celular. Podés cancelar la suscripción y también eliminar la cuenta cuando quieras; son dos cosas distintas y las dos están explicadas más abajo.</p>
+  </section>
+  <section>
+    <h2>La prueba gratis y la suscripción</h2>
+    <ul>
+      <li>Los primeros <strong>7 días</strong> son gratis, desde el primer acceso, sin cargar</li>
+    </ul>
+    <p>tarjeta. La prueba no se convierte sola en una suscripción paga: para pagar tenés que contratarla vos.</p>
+    <ul>
+      <li>Después de la prueba, usar la app requiere una <strong>suscripción mensual</strong>.</li>
+    </ul>
+    <p>Antes de pagar, Google Play te muestra el precio en tu moneda, que el cobro es mensual y que se renueva solo.</p>
+    <ul>
+      <li>Se <strong>renueva automáticamente</strong> cada mes hasta que la cancelás. Cancelarla</li>
+    </ul>
+    <p>frena los cobros futuros; el período que ya pagaste sigue disponible hasta que termina.</p>
+    <ul>
+      <li>Si el precio cambia, te avisamos antes, y el cambio aplica recién en la</li>
+    </ul>
+    <p>renovación siguiente. Si no estás de acuerdo, cancelás y no se te cobra nada más.</p>
+  </section>
+  <section>
+    <h2>Pagos y devoluciones</h2>
+    <p>Los cobros los procesa <strong>Google Play</strong> con el medio de pago de tu cuenta. Conviene no ve ni guarda los datos de tu tarjeta.</p>
+    <p>Que Google Play procese el cobro <strong>no te quita ningún derecho frente a Conviene</strong>, que sigue siendo quien te presta el servicio. Un pedido de devolución se resuelve según el caso, con las políticas de Google Play y con los derechos que la ley argentina te da y que no se pueden renunciar. Si hubo un error de cobro de nuestro lado —te cobramos dos veces, te cobramos después de cancelar—, escribinos y lo devolvemos.</p>
+  </section>
+  <section>
+    <h2>Derecho de arrepentimiento</h2>
+    <p>Como la contratación es a distancia, tenés derecho a arrepentirte de la compra <strong>dentro de los 10 días</strong> de contratada, sin dar motivos, y a que se te devuelva lo pagado (art. 34 de la Ley 24.240 y arts. 1110 y siguientes del Código Civil y Comercial), salvo en los casos que la propia ley exceptúa (art. 1116 del Código Civil y Comercial).</p>
+    <p>Para ejercerlo hay un botón <strong>«Arrepentirme de la compra»</strong> en Ajustes de la app, que no pide ningún trámite más que mandar el pedido. También podés hacerlo desde Google Play o escribiéndonos. Ejercer este derecho no te hace perder ningún otro.</p>
+  </section>
+  <section>
+    <h2>Cancelar la suscripción</h2>
+    <p>Podés cancelar la renovación en cualquier momento desde <strong>Google Play → Suscripciones</strong>, o con el botón <strong>«Cancelar la suscripción»</strong> en Ajustes de la app, que te lleva ahí directo. Cancelar frena los cobros futuros; en general la app sigue disponible hasta el fin del período que ya pagaste, salvo que por ley corresponda una baja inmediata o una devolución.</p>
+  </section>
+  <section class="permiso">
+    <h2>Lo que la app estima, y lo que no puede saber</h2>
+    <p>Lo decimos claro porque es la base de todo:</p>
+    <ul>
+      <li><strong>Las tarifas son de la plataforma y cambian cuando ella quiere</strong>, sin</li>
+    </ul>
+    <p>avisarnos. La app puede quedar desactualizada hasta que la actualicemos o hasta que vos cargues las tarifas nuevas.</p>
+    <ul>
+      <li><strong>La lectura de la pantalla puede fallar.</strong> La burbuja lee los números de</li>
+    </ul>
+    <p>la oferta; si la plataforma cambia el diseño, puede no leer o leer mal.</p>
+    <ul>
+      <li><strong>Si tus costos están mal cargados, el resultado está mal.</strong> La app calcula</li>
+    </ul>
+    <p>con lo que le diste.</p>
+    <ul>
+      <li><strong>«ACEPTAR» y «RECHAZAR» son una sugerencia calculada</strong>, no un consejo. Sale</li>
+    </ul>
+    <p>de comparar la estimación con el objetivo que vos mismo fijaste.</p>
+    <ul>
+      <li><strong>No garantiza ingresos</strong>, ni un porcentaje de aceptación en la plataforma,</li>
+    </ul>
+    <p>ni ningún resultado.</p>
+    <p>Cada número que muestra es una estimación. El único número real es el que te paga la plataforma.</p>
+  </section>
+  <section>
+    <h2>Primero tu seguridad</h2>
+    <p>Conviene puede mostrar información mientras estás trabajando, pero <strong>no tenés que mirar ni tocar el celular mientras manejás</strong>. Usá la burbuja solamente con el vehículo completamente detenido y en un lugar seguro. Conviene no acepta pedidos, no rechaza pedidos y no maneja por vos: la decisión siempre es tuya.</p>
+    <p>La primera vez que encendés la detección, la app te muestra esta advertencia y te pide que la confirmes. Cumplir las normas de tránsito es tu responsabilidad.</p>
+  </section>
+  <section>
+    <h2>El permiso de accesibilidad</h2>
+    <p>Para leer la oferta, la app usa el servicio de accesibilidad de Android. Solo lee la pantalla de las apps de reparto declaradas; no toca nada, no hace clics ni acciones automáticas, no guarda ni envía lo que lee. Podés apagarlo cuando quieras, desde la app o desde Android, y la app sigue sirviendo para calcular a mano. El detalle completo está en la política de privacidad. Si esto cambiara alguna vez, cambiarían estos términos y se te pediría de nuevo el consentimiento.</p>
+  </section>
+  <section>
+    <h2>Las plataformas de terceros</h2>
+    <p>Conviene no controla las reglas, los cambios, las decisiones ni las sanciones de PedidosYa ni de ninguna otra plataforma. <strong>Usar una app de terceros puede o no estar permitido por los términos de la plataforma con la que trabajás: revisarlos antes de usar Conviene es tu responsabilidad.</strong> Esta aclaración no limita la responsabilidad que legalmente le pueda corresponder a Conviene por sus propios actos o incumplimientos.</p>
+  </section>
+  <section>
+    <h2>Tus datos</h2>
+    <p>Lo que la app guarda, lo que sale del celular, con quién se comparte, cuánto tiempo se conserva y cómo ejercer tus derechos está en la <strong>política de privacidad</strong>, que forma parte de estos términos y se puede leer dentro de la app.</p>
+  </section>
+  <section>
+    <h2>Lo que no podés hacer</h2>
+    <ul>
+      <li>Modificar la app, descompilarla o saltear el pago.</li>
+      <li>Revenderla, prestarle tu cuenta a otro o usar una cuenta ajena.</li>
+      <li>Usarla para automatizar acciones en la plataforma. La app no hace clics ni</li>
+    </ul>
+    <p>acepta pedidos por vos, y no está diseñada para eso.</p>
+    <ul>
+      <li>Usarla para algo ilegal.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Suspensión o cierre de cuenta</h2>
+    <p>Podemos suspender o cerrar una cuenta cuando haya un incumplimiento relevante de estos términos, un uso fraudulento, una manipulación del sistema, una automatización prohibida o una conducta ilegal. Cuando sea razonablemente posible, te vamos a decir el motivo. <strong>Cerrar una cuenta no te quita</strong> las devoluciones, reintegros ni el acceso a períodos ya pagados que te correspondan por ley o por las condiciones de la suscripción.</p>
+  </section>
+  <section>
+    <h2>Responsabilidad</h2>
+    <p>Conviene te da estimaciones y herramientas para decidir, no una garantía de ingresos, de pedidos, de aceptación de ofertas ni de rentabilidad. Los resultados pueden variar por los datos que cargaste, por cambios de tarifas, por errores de lectura, por la disponibilidad de los servicios, por el funcionamiento de apps de terceros y por otros factores externos.</p>
+    <p><strong>No respondemos por pérdidas que provengan exclusivamente</strong> de una decisión que tomaste con datos que vos mismo cargaste mal, ni de cambios o decisiones de terceros que no dependen de Conviene, ni de lo que se pierda de tu celular —<strong>no hay copia de seguridad</strong>: si cambiás de celular o desinstalás, lo guardado se pierde—.</p>
+    <p><strong>Esto no limita</strong> los derechos que la Ley 24.240 te da como consumidor, ni la responsabilidad que legalmente le pueda corresponder a Conviene por sus propios incumplimientos, defectos o conductas. Si hay una cláusula de acá que la ley no permita, cae esa cláusula y el resto sigue valiendo.</p>
+  </section>
+  <section>
+    <h2>Cambios en la app y en estos términos</h2>
+    <p>Podemos actualizar la app para corregir errores, mejorar funciones, mantener la compatibilidad, sumar medidas de seguridad o adaptarla a cambios técnicos.</p>
+    <p>Cuando un cambio en <strong>estos términos</strong> afecte de manera relevante tus derechos u obligaciones, te lo avisamos dentro de la app antes de que tenga efecto, y se te vuelve a pedir la aceptación si hace falta. No vamos a usar un cambio de términos para quitarte derechos que la ley no permite renunciar.</p>
+    <p>Si Conviene dejara de prestarse de manera permanente, se frenan los cobros y se devuelve lo que pagaste del período que no llegaste a usar.</p>
+  </section>
+  <section>
+    <h2>Eliminar la cuenta</h2>
+    <p>Eliminar la cuenta es distinto de cancelar la suscripción: al eliminarla se borran tu cuenta y tus datos. Para pedirlo hay un botón <strong>«Eliminar mi cuenta»</strong> en Ajustes de la app, o podés escribirnos. Se hace sin pedir explicaciones y sin costo, salvo los datos que haya que conservar por obligación legal.</p>
+  </section>
+  <section>
+    <h2>Ley aplicable y reclamos</h2>
+    <p>Estos términos se rigen por las leyes de la <strong>República Argentina</strong>. Podés hacer consultas o reclamos a la dirección de abajo, y también usar las vías administrativas y judiciales que te correspondan según la legislación de defensa del consumidor, incluida la autoridad de Defensa del Consumidor de tu jurisdicción. La competencia judicial se determina por las reglas que la ley fija para las relaciones de consumo, sin imponerte una jurisdicción que limite tus derechos.</p>
+    <p><strong>No hay arbitraje obligatorio ni renuncia a acciones colectivas.</strong> La ley argentina no lo permite en relaciones de consumo, y no lo pretendemos.</p>
+  </section>
+  <div class="contacto">
+    <h2 style="border-top: none; padding-top: 0;">Quién está detrás</h2>
+    <p>Joaquín Manuel Maciel, persona humana, monotributista<br>CUIT 20-45355467-9<br>General Mosconi 848, Los Polvorines, Buenos Aires, Argentina</p>
+    <a class="correo" href="mailto:joaky848@gmail.com">joaky848@gmail.com</a>
+  </div>
+</main>
+
+</body>
+</html>

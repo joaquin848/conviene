@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacidad de Conviene</title>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+
+<style>
+  :root {
+    /* Neutros con sesgo verde: el acento de la app, bajado a un valor que se
+       lee sobre papel. El neón de la burbuja no pasa contraste en claro. */
+    --papel: #F6F8F6;
+    --papel-hondo: #EDF1EE;
+    --tinta: #111917;
+    --tinta-suave: #55635E;
+    --verde: #007A38;
+    --verde-tenue: #E2F0E7;
+    --borde: #D7E0DA;
+    --borde-fuerte: #B9C7C0;
+
+    --serie: "Literata", Georgia, "Times New Roman", serif;
+    --titulo: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --papel: #0D1412;
+      --papel-hondo: #141D1A;
+      --tinta: #E7EFEA;
+      --tinta-suave: #93A49D;
+      --verde: #22FF8A;
+      --verde-tenue: #13251C;
+      --borde: #24312C;
+      --borde-fuerte: #33443D;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --papel: #0D1412;
+    --papel-hondo: #141D1A;
+    --tinta: #E7EFEA;
+    --tinta-suave: #93A49D;
+    --verde: #22FF8A;
+    --verde-tenue: #13251C;
+    --borde: #24312C;
+    --borde-fuerte: #33443D;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--papel);
+    color: var(--tinta);
+    font-family: var(--serie);
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0 20px 96px;
+  }
+
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* --- Encabezado --- */
+
+  header {
+    padding: 56px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .marca {
+    font-family: var(--titulo);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--verde);
+  }
+
+  h1 {
+    font-family: var(--titulo);
+    font-weight: 600;
+    font-size: clamp(30px, 6vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .fecha {
+    font-family: var(--titulo);
+    font-size: 13px;
+    color: var(--tinta-suave);
+    padding-top: 4px;
+    border-top: 1px solid var(--borde);
+  }
+
+  .entrada {
+    color: var(--tinta-suave);
+    margin: 0;
+  }
+
+  /* --- Resumen: es una lista de prioridad, por eso va numerada --- */
+
+  .resumen {
+    background: var(--papel-hondo);
+    border-left: 3px solid var(--verde);
+    padding: 24px 24px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .resumen h2 {
+    font-family: var(--titulo);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  .resumen ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: punto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .resumen li {
+    counter-increment: punto;
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .resumen li::before {
+    content: counter(punto);
+    font-family: var(--titulo);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--verde);
+    line-height: 1.9;
+  }
+
+  /* --- Secciones --- */
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  h2 {
+    font-family: var(--titulo);
+    font-weight: 600;
+    font-size: 23px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0;
+    padding-top: 18px;
+    border-top: 2px solid var(--tinta);
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-family: var(--titulo);
+    font-weight: 600;
+    font-size: 16px;
+    margin: 10px 0 -4px;
+  }
+
+  p { margin: 0; }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1em;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  li::marker { color: var(--borde-fuerte); }
+
+  strong { font-weight: 600; }
+
+  a {
+    color: var(--verde);
+    text-underline-offset: 3px;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--verde);
+    outline-offset: 3px;
+  }
+
+  /* --- El bloque de accesibilidad: es lo que más se cuestiona, así que se
+         separa del cuerpo y se lee como una ficha, no como más texto. --- */
+
+  .permiso {
+    border: 1px solid var(--borde-fuerte);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .permiso h2 {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .apps {
+    list-style: none;
+    padding: 0;
+    margin: 2px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .apps li {
+    font-family: var(--titulo);
+    font-size: 13px;
+    padding: 5px 11px;
+    background: var(--verde-tenue);
+    color: var(--verde);
+    border-radius: 3px;
+  }
+
+  .no {
+    font-family: var(--titulo);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--tinta);
+    background: var(--papel-hondo);
+    padding: 14px 16px;
+    border-radius: 3px;
+  }
+
+  /* --- Contacto --- */
+
+  .contacto {
+    border-top: 2px solid var(--tinta);
+    padding-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .correo {
+    font-family: var(--titulo);
+    font-weight: 600;
+    font-size: 19px;
+  }
+</style>
+
+<main>
+  <header>
+    <div class="marca">Conviene</div>
+    <h1>Política de privacidad</h1>
+    <div class="fecha">Última actualización: 12 de septiembre de 2026</div>
+  </header>
+
+  <p class="entrada">
+    Conviene es una aplicación para repartidores y conductores que
+    calcula cuánto deja cada pedido después de los gastos y lleva el balance de
+    los turnos. Acá está qué datos usa, para qué, y qué sale del celular.
+    Escrito para que se entienda, no para cubrirnos.
+  </p>
+
+  <div class="resumen">
+    <h2>Lo más importante</h2>
+    <ol>
+      <li>
+        <span><strong>Casi todo se queda en tu celular.</strong> Tus turnos,
+        tus costos, tus tarifas, tus movimientos y tus ganancias no se suben a
+        ningún lado.</span>
+      </li>
+      <li>
+        <span><strong>La app lee la pantalla de las apps de reparto</strong>
+        para sacar los km y el monto de la oferta. No guarda ni envía nada de
+        lo que lee.</span>
+      </li>
+      <li>
+        <span><strong>No vendemos ni compartimos tus datos con nadie</strong>,
+        ni para publicidad ni para nada.</span>
+      </li>
+    </ol>
+  </div>
+
+  <section class="permiso">
+    <h2>El permiso de accesibilidad</h2>
+    <p>
+      Es el permiso más delicado que pide la app y merece su propia
+      explicación.
+    </p>
+
+    <h3>Para qué se usa</h3>
+    <p>
+      Cuando te llega una oferta en la app de reparto, Conviene lee el
+      texto de esa pantalla para encontrar dos cosas: los kilómetros y el
+      monto. Con eso calcula lo que te deja el pedido y te lo muestra en una
+      burbuja flotante, sin que tengas que copiar nada a mano ni salir de la
+      app de reparto.
+    </p>
+
+    <h3>Qué apps puede leer</h3>
+    <p>
+      Solo estas cinco. El límite está declarado en el propio sistema Android,
+      no es una decisión nuestra que se pueda cambiar sin publicar una
+      actualización:
+    </p>
+    <ul class="apps">
+      <li>PedidosYa Repartidor</li>
+      <li>Uber Driver</li>
+      <li>DiDi Conductor</li>
+      <li>Envíos Extra</li>
+      <li>Rappi</li>
+    </ul>
+    <p class="no">
+      Ninguna otra app del celular le genera eventos al servicio. No puede leer
+      tu WhatsApp, tu banco, tu correo ni tus contraseñas, aunque quisiera.
+    </p>
+
+    <h3>Qué hace con lo que lee</h3>
+    <p>
+      Busca números seguidos de «km» o de «$», los usa para el cálculo y los
+      descarta. <strong>No se guarda ni se transmite el contenido de ninguna
+      pantalla.</strong> Lo único que queda en el celular es lo que vos marcás
+      como aceptado o rechazado, y eso son números tuyos, no de la pantalla de
+      nadie.
+    </p>
+
+    <h3>Cómo apagarlo</h3>
+    <p>
+      Desde Inicio, con el interruptor de análisis, o quitándole el permiso
+      desde los ajustes de Android. La app sigue funcionando para calcular a
+      mano y llevar el balance.
+    </p>
+  </section>
+
+  <section>
+    <h2>Qué se guarda en tu celular</h2>
+    <p>Nada de esto sale del teléfono:</p>
+    <ul>
+      <li>Tus costos: precio de la nafta, km por litro, desgaste por km y gastos fijos.</li>
+      <li>Tu objetivo por hora y tus filtros.</li>
+      <li>Tus turnos: pedidos aceptados, rechazados y demorados, km, horas y montos.</li>
+      <li>Tus movimientos cargados a mano y tus gastos de vehículo.</li>
+      <li>Tus tarifas, si las cargaste del portal de la plataforma.</li>
+      <li>Cómo configuraste la burbuja, el tema y la moneda.</li>
+    </ul>
+    <p>
+      Si desinstalás la app, todo esto se borra con ella.
+      <strong>No hay copia de seguridad</strong>: si cambiás de celular, hay
+      que volver a cargarlo.
+    </p>
+  </section>
+
+  <section>
+    <h2>Qué sale del celular</h2>
+
+    <h3>Tu cuenta</h3>
+    <p>
+      Para usar la app hay que entrar con Google. De esa cuenta se recibe tu
+      <strong>nombre, tu dirección de correo y tu foto de perfil</strong>, y se
+      guarda un identificador junto con la fecha en que empezaste la prueba y
+      la del último acceso. Si te suscribís, se guarda también <strong>qué
+      versión de los términos y condiciones aceptaste y cuándo</strong>: es la
+      constancia de que los aceptaste. Se usa para eso y para saber si tu
+      prueba gratuita sigue vigente. Se guarda en Firebase (Google Cloud).
+    </p>
+
+    <h3>La suscripción</h3>
+    <p>
+      La cobra Google Play. <strong>No vemos ni recibimos los datos de tu
+      tarjeta en ningún momento</strong>: esa parte la maneja Google entera.
+    </p>
+
+    <h3>Los reportes de problemas</h3>
+    <p>
+      Si mandás un reporte desde Ayuda y problemas, se guarda lo que
+      escribiste, el modelo de tu celular, la versión de Android, la versión de
+      la app y tu correo, para poder responderte. Si adjuntás una foto, esa
+      foto <strong>no se sube a ningún servidor nuestro</strong>: se abre tu
+      app de correo con el mensaje armado y la mandás vos.
+    </p>
+
+    <h3>Los reportes automáticos de fallas</h3>
+    <p>
+      Cuando la app se rompe, manda sola un informe técnico a Firebase
+      Crashlytics (Google) para que podamos arreglarlo. Ese informe lleva
+      <strong>en qué línea del código falló, el modelo del celular, la versión
+      de Android y la de la app, y cuánta memoria había libre</strong>.
+    </p>
+    <p>
+      No lleva tus turnos, tus ganancias, tus costos ni nada de lo que la app
+      haya leído de la pantalla. Tampoco lleva tu nombre ni tu correo: los
+      informes no están asociados a tu cuenta.
+    </p>
+    <p>
+      Va sin preguntar y a propósito: una app que se rompe en medio de un turno
+      y no avisa se queda rota hasta que a alguien se le ocurre reportarla.
+    </p>
+
+    <h3>Las tarifas</h3>
+    <p>
+      La app descarga la tabla de tarifas de la zona desde nuestro servidor. Es
+      una descarga: no se envía nada tuyo para pedirla.
+    </p>
+  </section>
+
+  <section>
+    <h2>Con quién se comparte</h2>
+    <p>Con nadie, salvo los servicios que hacen falta para que la app funcione:</p>
+    <ul>
+      <li><strong>Firebase (Google)</strong> — cuenta, estado de la prueba, reportes de problemas y los informes automáticos de fallas.</li>
+      <li><strong>Google Play</strong> — cobro de la suscripción.</li>
+    </ul>
+    <p>
+      No hay publicidad, no hay rastreadores de terceros, y no se vende ni se
+      cede información a nadie.
+    </p>
+  </section>
+
+  <section>
+    <h2>Cuánto tiempo se guarda</h2>
+    <p>
+      Lo del celular, hasta que lo borres o desinstales la app. Lo de tu
+      cuenta, mientras la cuenta exista. Los reportes de problemas, hasta que
+      el problema esté resuelto. Los informes automáticos de fallas, 90 días,
+      que es lo que los guarda Crashlytics.
+    </p>
+  </section>
+
+  <section>
+    <h2>Tus derechos</h2>
+    <p>
+      Podés pedir que borremos tu cuenta y todo lo asociado escribiendo a la
+      dirección de abajo. Se hace sin pedir explicaciones y sin costo.
+    </p>
+    <p>También podés, en cualquier momento y sin escribirle a nadie:</p>
+    <ul>
+      <li>Quitarle el permiso de accesibilidad desde los ajustes de Android.</li>
+      <li>Borrar tus turnos y movimientos desde Balance.</li>
+      <li>Desinstalar la app, que se lleva todo lo que estaba en el celular.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Menores</h2>
+    <p>
+      La app es para personas que trabajan repartiendo o manejando. No está
+      dirigida a menores de 18 años y no recolectamos datos de menores a
+      sabiendas.
+    </p>
+  </section>
+
+  <section>
+    <h2>Otros permisos</h2>
+    <ul>
+      <li><strong>Mostrar sobre otras apps</strong> — para dibujar la burbuja encima de la app de reparto.</li>
+      <li><strong>Notificaciones</strong> — para el aviso de avance del turno.</li>
+      <li><strong>Cámara y fotos</strong> — solo si elegís adjuntar una imagen a un reporte.</li>
+      <li><strong>Sin optimización de batería</strong> — opcional, para que Android no duerma la detección en medio de un turno.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Cambios</h2>
+    <p>
+      Si esta política cambia, se actualiza la fecha de arriba y se avisa
+      dentro de la app antes de que el cambio tenga efecto.
+    </p>
+  </section>
+
+  <div class="contacto">
+    <h2 style="border-top: none; padding-top: 0;">Contacto</h2>
+    <p>Cualquier duda o pedido sobre tus datos:</p>
+    <a class="correo" href="mailto:joaky848@gmail.com">joaky848@gmail.com</a>
+  </div>
+</main>
+
+</body>
+</html>
