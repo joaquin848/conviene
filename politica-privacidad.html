@@ -268,7 +268,7 @@
   <header>
     <div class="marca">Conviene</div>
     <h1>Política de privacidad</h1>
-    <div class="fecha">Última actualización: 14 de septiembre de 2026</div>
+    <div class="fecha">Última actualización: 9 de octubre de 2026</div>
   </header>
 
   <p class="entrada">
@@ -283,8 +283,8 @@
     <ol>
       <li>
         <span><strong>Casi todo se queda en tu celular.</strong> Tus turnos,
-        tus costos, tus tarifas, tus movimientos y tus ganancias no se suben a
-        ningún lado.</span>
+        tus costos, tus tarifas, tus movimientos, tus ganancias y tu recorrido
+        con GPS no se suben a ningún lado.</span>
       </li>
       <li>
         <span><strong>La app lee la pantalla de las apps de reparto</strong>
@@ -349,6 +349,53 @@
     </p>
   </section>
 
+  <section class="permiso">
+    <h2>La ubicación (opcional)</h2>
+
+    <h3>Para qué se usa</h3>
+    <p>
+      Si le das permiso, mientras tenés un turno abierto la app usa el GPS del
+      celular para dibujar tu recorrido, contar los kilómetros que hiciste de
+      verdad (para la nafta, el desgaste y el aviso del próximo service) y
+      aprender cuánto tardás en cada pedido.
+    </p>
+
+    <h3>Cuándo</h3>
+    <p>
+      Solo con el permiso «mientras se usa la app», y solo durante el turno:
+      empieza a grabar cuando el turno se abre y para cuando lo pausás o lo
+      cerrás. La app no pide la ubicación «todo el tiempo». Antes de pedir el
+      permiso, la app te muestra un aviso con esta misma explicación y podés
+      decir que no.
+    </p>
+
+    <h3>Dónde queda</h3>
+    <p>
+      Los puntos del recorrido se guardan <strong>solo en tu celular</strong>,
+      en un archivo por turno. No se suben a ningún servidor nuestro y no se
+      comparten con nadie. Se borran solos después de un año, o antes si
+      desinstalás la app o borrás sus datos.
+    </p>
+
+    <h3>El mapa</h3>
+    <p>
+      El fondo del mapa lo dibuja <strong>Google Maps</strong>. Para eso, la
+      app le pide a Google las imágenes de la zona que estás mirando; tu
+      recorrido no se le manda: se dibuja encima, en el celular. Como cualquier
+      servicio de mapas, Google recibe datos técnicos —la dirección IP, datos
+      del dispositivo, identificadores del SDK de Maps, informes de fallas y
+      cómo movés el mapa— y los trata según su
+      <a href="https://policies.google.com/privacy">Política de Privacidad</a>.
+    </p>
+
+    <h3>Cómo apagarla</h3>
+    <p>
+      No dándole el permiso, o quitándoselo desde los ajustes de Android. El
+      resto de la app sigue funcionando igual: la nafta se calcula con los
+      kilómetros de las ofertas.
+    </p>
+  </section>
+
   <section>
     <h2>Qué se guarda en tu celular</h2>
     <p>Nada de esto sale del teléfono:</p>
@@ -356,7 +403,8 @@
       <li>Tus costos: precio de la nafta, km por litro, desgaste por km y gastos fijos.</li>
       <li>Tu objetivo por hora y tus filtros.</li>
       <li>Tus turnos: pedidos aceptados, rechazados y demorados, km, horas y montos.</li>
-      <li>Tus movimientos cargados a mano y tus gastos de vehículo.</li>
+      <li>Tus movimientos cargados a mano, tus gastos y los services de tu vehículo.</li>
+      <li>Tu recorrido con GPS, si lo activaste: un archivo por turno, hasta un año.</li>
       <li>Tus tarifas, si las cargaste del portal de la plataforma.</li>
       <li>Cómo configuraste la burbuja, el tema y la moneda.</li>
     </ul>
@@ -435,6 +483,7 @@
     <ul>
       <li><strong>Firebase (Google)</strong> — cuenta, estado de la prueba, reportes de problemas y los informes automáticos de fallas.</li>
       <li><strong>Google Play</strong> — cobro de la suscripción.</li>
+      <li><strong>Google Maps (Google)</strong> — el fondo del mapa del recorrido, si activaste la ubicación (ver «La ubicación»).</li>
     </ul>
     <p>
       No hay publicidad, no hay rastreadores de terceros, y no se vende ni se
@@ -445,8 +494,8 @@
   <section>
     <h2>Cuánto tiempo se guarda</h2>
     <p>
-      Lo del celular, hasta que lo borres o desinstales la app. Lo de tu
-      cuenta, mientras la cuenta exista. Los reportes de problemas, hasta que
+      Lo del celular, hasta que lo borres o desinstales la app; el recorrido
+      con GPS, un año como máximo. Lo de tu cuenta, mientras la cuenta exista. Los reportes de problemas, hasta que
       el problema esté resuelto. Los informes automáticos de fallas, 90 días,
       que es lo que los guarda Crashlytics.
     </p>
@@ -461,6 +510,7 @@
     <p>También podés, en cualquier momento y sin escribirle a nadie:</p>
     <ul>
       <li>Quitarle el permiso de accesibilidad desde los ajustes de Android.</li>
+      <li>Quitarle el permiso de ubicación desde los ajustes de Android.</li>
       <li>Borrar tus turnos y movimientos desde Balance.</li>
       <li>Desinstalar la app, que se lleva todo lo que estaba en el celular.</li>
     </ul>
@@ -482,6 +532,7 @@
       <li><strong>Notificaciones</strong> — para el aviso de avance del turno.</li>
       <li><strong>Cámara y fotos</strong> — solo si elegís adjuntar una imagen a un reporte.</li>
       <li><strong>Sin optimización de batería</strong> — opcional, para que Android no duerma la detección en medio de un turno.</li>
+      <li><strong>Ubicación precisa</strong> — opcional, para el recorrido del turno (ver «La ubicación»).</li>
     </ul>
   </section>
 
