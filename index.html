@@ -33,7 +33,6 @@
     --neon: #22FF8A;
     --verde: #3DD68C;
     --sobre-verde: #06210F;
-    --rojo: #F25F5C;
     --titulos: "Archivo", "Arial Narrow", system-ui, sans-serif;
     --cuerpo: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
@@ -68,7 +67,7 @@
   .lockup strong { display: block; font: 800 19px/1.1 var(--titulos); font-stretch: 112.5%; letter-spacing: 1px; }
   .lockup span span { display: block; margin-top: 3px; font-size: 10px; font-weight: 500; letter-spacing: 3px; color: var(--secundario); }
 
-  .portada { display: grid; gap: 44px; padding-block: 36px 56px; }
+  .portada { padding-block: 36px 32px; }
 
   h1 {
     font: 800 clamp(2.5rem, 11.5vw, 3.7rem)/1.02 var(--titulos);
@@ -96,34 +95,7 @@
   html[data-so="ios"] .tienda[data-tienda="ios"] { order: -1; }
   .aclara { margin-top: 12px; font-size: .9rem; color: var(--secundario); }
 
-  /* El juego: dos ofertas como las ve el rider, y al elegir, lo que no le dicen. */
   h2 { font: 800 clamp(1.45rem, 5.6vw, 2rem)/1.12 var(--titulos); font-stretch: 112.5%; letter-spacing: -.01em; }
-  .ofertas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-  .oferta {
-    display: flex; flex-direction: column; gap: 12px; padding: 14px;
-    border-radius: 16px; border: 2px solid var(--borde); background: var(--superficie);
-  }
-  .oferta h3 { font-size: .95rem; font-weight: 700; }
-  .oferta dl { display: grid; gap: 8px; }
-  .oferta dt { font-size: .8rem; color: var(--secundario); }
-  .oferta dd { font-size: 1.15rem; font-weight: 700; font-variant-numeric: tabular-nums; }
-  .elegir {
-    margin-top: auto; padding: 12px 8px; border: 0; border-radius: 10px; cursor: pointer;
-    font: 700 .95rem var(--cuerpo); color: var(--sobre-verde); background: var(--verde);
-  }
-  .veredicto { display: grid; gap: 2px; margin-top: auto; }
-  .veredicto[hidden] { display: none; }
-  .voto { font-weight: 700; letter-spacing: .02em; }
-  .monto { font: 800 clamp(1.5rem, 7vw, 1.9rem)/1.15 var(--titulos); font-stretch: 112.5%; font-variant-numeric: tabular-nums; }
-  .queda { font-size: .82rem; color: var(--bajada); }
-  .cuenta { margin-top: 8px; font-size: .82rem; line-height: 1.4; color: var(--secundario); font-variant-numeric: tabular-nums; }
-  .oferta[data-voto="aceptar"].abierta { background: #000; border-color: var(--neon); box-shadow: 0 0 22px rgba(34, 255, 138, .28); }
-  .oferta[data-voto="rechazar"].abierta { background: #000; border-color: var(--rojo); box-shadow: 0 0 22px rgba(242, 95, 92, .24); }
-  .oferta[data-voto="aceptar"] .voto, .oferta[data-voto="aceptar"] .monto { color: var(--neon); }
-  .oferta[data-voto="rechazar"] .voto, .oferta[data-voto="rechazar"] .monto { color: var(--rojo); }
-  .conclusion { margin-top: 16px; font-size: 1.1rem; font-weight: 500; }
-  .conclusion:empty { display: none; }
-  .nota { margin-top: 10px; font-size: .82rem; line-height: 1.45; color: var(--secundario); }
 
   .capturas {
     display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x proximity;
@@ -145,12 +117,9 @@
   footer p + p { margin-top: 8px; }
 
   @media (min-width: 880px) {
-    .portada { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: center; padding-block: 64px 72px; }
+    .portada { padding-block: 64px 40px; }
     .capturas { margin-inline: 0; padding-inline: 2px; }
     .capturas img { flex: 1 1 0; min-width: 0; width: auto; }
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .oferta { transition: border-color .25s ease, box-shadow .25s ease, background-color .25s ease; }
   }
 </style>
 </head>
@@ -162,53 +131,15 @@
   </header>
 
   <main>
-    <div class="portada">
-      <section>
-        <h1>¿Te <em>conviene</em><br>este pedido?</h1>
-        <p class="bajada">Antes de aceptar, calculá cuánto te queda limpio después de nafta y gastos.</p>
-        <div class="tiendas">
-          <a class="tienda" data-tienda="play" href="https://play.google.com/store/apps/details?id=ar.com.conviene.app&amp;utm_source=web&amp;utm_campaign=inicio">Descargar en Google Play</a>
-          <a class="tienda" data-tienda="ios" href="https://apps.apple.com/ar/app/id6822128058">Descargar en el App Store</a>
-        </div>
-        <p class="aclara">7 días gratis, sin tarjeta. Hoy en Argentina.</p>
-      </section>
-
-      <section aria-labelledby="titulo-juego">
-        <h2 id="titulo-juego">Tu app te muestra los km. ¿Cuál agarrás?</h2>
-        <div class="ofertas">
-          <article class="oferta" data-oferta="largo" data-voto="rechazar">
-            <h3>Pedido 1</h3>
-            <dl>
-              <div><dt>Hasta el local</dt><dd>1,5 km</dd></div>
-              <div><dt>Hasta la entrega</dt><dd>9,0 km</dd></div>
-            </dl>
-            <button class="elegir" type="button">Agarro este</button>
-            <div class="veredicto" hidden>
-              <p class="voto">RECHAZAR</p>
-              <p class="monto">$4.525</p>
-              <p class="queda">te quedan limpios</p>
-              <p class="cuenta">Paga ≈ $6.100<br>Gastos ≈ $1.575<br>≈ 52 min, $5.221/h</p>
-            </div>
-          </article>
-          <article class="oferta" data-oferta="corto" data-voto="aceptar">
-            <h3>Pedido 2</h3>
-            <dl>
-              <div><dt>Hasta el local</dt><dd>0,7 km</dd></div>
-              <div><dt>Hasta la entrega</dt><dd>2,8 km</dd></div>
-            </dl>
-            <button class="elegir" type="button">Agarro este</button>
-            <div class="veredicto" hidden>
-              <p class="voto">ACEPTAR</p>
-              <p class="monto">$2.775</p>
-              <p class="queda">te quedan limpios</p>
-              <p class="cuenta">Paga ≈ $3.300<br>Gastos ≈ $525<br>≈ 15 min, $11.100/h</p>
-            </div>
-          </article>
-        </div>
-        <p class="conclusion" id="conclusion" aria-live="polite"></p>
-        <p class="nota">Ejemplo con números inventados: $150 por km de nafta y desgaste, y un mínimo de $8.000 por hora. La app calcula con tus tarifas y tus gastos, y siempre es una estimación.</p>
-      </section>
-    </div>
+    <section class="portada">
+      <h1>¿Te <em>conviene</em><br>este pedido?</h1>
+      <p class="bajada">Antes de aceptar, calculá cuánto te queda limpio después de nafta y gastos.</p>
+      <div class="tiendas">
+        <a class="tienda" data-tienda="play" href="https://play.google.com/store/apps/details?id=ar.com.conviene.app&amp;utm_source=web&amp;utm_campaign=inicio">Descargar en Google Play</a>
+        <a class="tienda" data-tienda="ios" href="https://apps.apple.com/ar/app/id6822128058">Descargar en el App Store</a>
+      </div>
+      <p class="aclara">7 días gratis, sin tarjeta. Hoy en Argentina.</p>
+    </section>
 
     <section aria-label="Pantallas de la app">
       <div class="capturas" tabindex="0" role="group" aria-label="Pantallas de la app, deslizá para ver más">
@@ -265,22 +196,6 @@
       a.href = a.href.replace('utm_campaign=inicio', 'utm_campaign=' + campana);
     });
   }
-
-  var conclusiones = {
-    largo: 'El largo paga más, pero por hora te deja menos de la mitad.',
-    corto: 'Bien ahí. El corto paga menos, pero por hora te deja más del doble.'
-  };
-  document.querySelectorAll('.elegir').forEach(function (boton) {
-    boton.addEventListener('click', function () {
-      var elegida = boton.closest('.oferta').dataset.oferta;
-      document.querySelectorAll('.oferta').forEach(function (oferta) {
-        oferta.classList.add('abierta');
-        oferta.querySelector('.elegir').hidden = true;
-        oferta.querySelector('.veredicto').hidden = false;
-      });
-      document.getElementById('conclusion').textContent = conclusiones[elegida];
-    });
-  });
 </script>
 </body>
 </html>
